@@ -189,7 +189,7 @@ if __name__=='__main__':
 						help='learning rate')
 	parser.add_argument('--batch_size', type=int, default=32,
 						help='bathc size')
-	parser.add_argument('--epochs', type=int, default=600,
+	parser.add_argument('--epochs', type=int, default=200,
 						help='training epoch number')
 	parser.add_argument('--class_num', type=int, default=4,
 						help='label number')
