@@ -72,8 +72,8 @@ def train(args):
 
 		if joint_f1 > best_joint_f1:
 			model_path = args.model_dir + args.model + args.task + args.emb + '.pt'
-			# torch.save(model, model_path)
-			torch.save({'state_dict': model.state_dict()}, model_path)
+			torch.save(model, model_path)
+			# torch.save({'state_dict': model.state_dict()}, model_path)
 			best_joint_f1 = joint_f1
 			best_joint_epoch = i
 	print('best epoch: {}\tbest dev {} f1: {:.5f}\n\n'.format(best_joint_epoch, args.task, best_joint_f1))
@@ -120,10 +120,10 @@ def eval(model, dataset, args):
 def test(args, general_embedding, domain_embedding):
 	print("Evaluation on testset:")
 	model_path = args.model_dir + args.model + args.task + args.emb + '.pt'
-	model = MultiInferRNNModel(general_embedding, domain_embedding, args).to(args.device)
-	# model = torch.load(model_path).to(args.device)
-	chkpt = torch.load(model_path)
-	model.load_state_dict(chkpt['state_dict'])
+	# model = MultiInferRNNModel(general_embedding, domain_embedding, args).to(args.device)
+	# chkpt = torch.load(model_path)
+	# model.load_state_dict(chkpt['state_dict'])
+	model = torch.load(model_path).to(args.device)	
 	model.eval()
 
 	word2index = json.load(open(args.prefix + 'doubleembedding/word_idx.json'))
@@ -202,7 +202,9 @@ if __name__=='__main__':
 		args.class_num = 6
 
 	if args.mode == 'train':
-		gen_emb, dom_emb = train(args)
-		test(args, gen_emb, dom_emb )
+		# gen_emb, dom_emb = train(args)
+		# test(args, gen_emb, dom_emb)
+		train(args)
+		test(args)
 	else:
 		test(args)
