@@ -71,7 +71,7 @@ def train(args):
 		joint_precision, joint_recall, joint_f1 = eval(model, devset, args)
 
 		if joint_f1 > best_joint_f1:
-			model_path = args.model_dir + args.model + args.task + '.pt'
+			model_path = args.model_dir + args.model + args.task + args.emb + '.pt'
 			torch.save(model, model_path)
 			best_joint_f1 = joint_f1
 			best_joint_epoch = i
