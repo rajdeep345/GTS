@@ -72,7 +72,8 @@ def train(args):
 
 		if joint_f1 > best_joint_f1:
 			model_path = args.model_dir + args.model + args.task + args.emb + '.pt'
-			torch.save(model, model_path)
+			# torch.save(model, model_path)
+            torch.save({'state_dict': model.state_dict()}, model_path)
 			best_joint_f1 = joint_f1
 			best_joint_epoch = i
 	print('best epoch: {}\tbest dev {} f1: {:.5f}\n\n'.format(best_joint_epoch, args.task, best_joint_f1))
