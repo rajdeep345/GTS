@@ -117,13 +117,13 @@ def eval(model, dataset, args):
 	return precision, recall, f1
 
 
-def test(args, general_embedding, domain_embedding):
+def test(args):
 	print("Evaluation on testset:")
 	model_path = args.model_dir + args.model + args.task + args.emb + '.pt'
 	# model = MultiInferRNNModel(general_embedding, domain_embedding, args).to(args.device)
 	# chkpt = torch.load(model_path)
 	# model.load_state_dict(chkpt['state_dict'])
-	model = torch.load(model_path).to(args.device)	
+	model = torch.load(model_path).to(args.device)
 	model.eval()
 
 	word2index = json.load(open(args.prefix + 'doubleembedding/word_idx.json'))
