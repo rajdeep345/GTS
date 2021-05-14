@@ -151,7 +151,7 @@ if __name__ == '__main__':
 						help='dataset')
 	parser.add_argument('--max_sequence_len', type=int, default=100,
 						help='max length of a sentence')
-	parser.add_argument('--device', type=str, default="cuda",
+	parser.add_argument('--device', type=str, default="cuda:1",
 						help='gpu or cpu')
 
 	parser.add_argument('--bert_model_path', type=str,
