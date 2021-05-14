@@ -174,6 +174,7 @@ class Metric():
 				g_set.add(str(i) + '-'+ '-'.join(map(str, pair)))
 				golden_set.add(str(i) + '-' + '-'.join(map(str, pair)))
 
+			p_set = set()
 			predicted_aspect_spans = self.get_spans(self.predictions[i], self.sen_lengths[i], self.tokens_ranges[i], 1)
 			predicted_opinion_spans = self.get_spans(self.predictions[i], self.sen_lengths[i], self.tokens_ranges[i], 2)
 			if self.args.task == 'pair':
