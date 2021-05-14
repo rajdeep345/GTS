@@ -119,7 +119,7 @@ def eval(model, dataset, args):
 
 def test(args, general_embedding, domain_embedding):
 	print("Evaluation on testset:")
-	model_path = args.model_dir + args.model + args.task + '.pt'
+	model_path = args.model_dir + args.model + args.task + args.emb + '.pt'
 	model = MultiInferRNNModel(general_embedding, domain_embedding, args).to(args.device)
 	# model = torch.load(model_path).to(args.device)
 	chkpt = torch.load(model_path)
